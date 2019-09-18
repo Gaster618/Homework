@@ -51,13 +51,8 @@ class MyMatrix:
 	def flip_up_down(self):
 		if self.size() == (0, 0): raise Exception('Матрица должна быть заполнена')
 
-		if len(self.__data) % 2 == 0:
-			for i in range(len(self.__data) // 2):
-				self.__data[i], self.__data[-(i+1)] = self.__data[-(i+1)], self.__data[i]
-		else:
-			medium = len(self.__data) // 2 + 1
-			for i in range(medium):
-				self.__data[i], self.__data[-(i+1)] = self.__data[-(i+1)], self.__data[i]
+		for i in range(len(self.__data) // 2):
+			self.__data[i], self.__data[-(i+1)] = self.__data[-(i+1)], self.__data[i]
 		return self.__data
 
 		"""
@@ -67,16 +62,11 @@ class MyMatrix:
 		"""
 		#raise NotImplementedError
 
-	def flip_left_right(self):  
-		if len(self.__data[0]) % 2 == 0:
-			for i in range(len(self.__data)):
-				for j in range(len(self.__data[i]) - 1):
-					self.__data[i][j], self.__data[i][-(j+1)] = self.__data[i][-(j+1)], self.__data[i][j]
-		elif len(self.__data[0]) % 2 == 1:
-			medium = len(self.__data[0]) // 2 + 1
-			for i in range(medium):
-				for j in range(len(self.__data[i]) - 1):
-					self.__data[i][j], self.__data[i][-(j+1)] = self.__data[i][-(j+1)], self.__data[i][j]
+	def flip_left_right(self): 
+		if self.size() == (0, 0): raise Exception('Матрица должна быть заполнена') 
+		for i in range(len(self.__data)):
+			for j in range(len(self.__data[i]) - 1):
+				self.__data[i][j], self.__data[i][-(j+1)] = self.__data[i][-(j+1)], self.__data[i][j]
 		return self.__data
 
 
@@ -92,20 +82,16 @@ class MyMatrix:
 	# но возвращают изменённую КОПИЮ матрицы
 	def flipped_up_down(self):
 		if self.size() == (0, 0): raise Exception('Матрица должна быть заполнена')
-		data = copy.deepcopy(self.__data)
-		if len(data) % 2 == 0:
-			for i in range(len(data) // 2):
-				data[i], data[-(i+1)] = data[-(i+1)], data[i]
-		else:
-			medium = len(data) // 2 + 1
-			for i in range(medium):
-				data[i], data[-(i+1)] = data[-(i+1)], data[i]
+		data = copy.deepcopy(self.__data)0:
+		for i in range(len(data) // 2):
+			data[i], data[-(i+1)] = data[-(i+1)], data[i][i]
 		return data
 
 
 		#raise NotImplementedError
 
 	def flipped_left_right(self):
+		if self.size() == (0, 0): raise Exception('Матрица должна быть заполнена')
 		data = copy.deepcopy(self.__data)
 		third = 0 
 		if len(data) % 2 == 1:
@@ -122,6 +108,7 @@ class MyMatrix:
 		#raise NotImplementedError
 
 	def transpose(self):
+		if self.size() == (0, 0): raise Exception('Матрица должна быть заполнена')
 		self.__data = [list(x) for x in zip(*self.__data)]
 		return self.__data
 
